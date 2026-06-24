@@ -398,3 +398,149 @@ body {
     color: #aaaaaa;
     font-size: 14px;
 }
+
+/* ===== MOBILE FRIENDLY ===== */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    /* HERO */
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .cta-btn {
+        font-size: 16px;
+        padding: 14px 30px;
+    }
+
+    /* STATS */
+    .stats {
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .stat-item h2 {
+        font-size: 30px;
+    }
+
+    /* FEATURES */
+    .features {
+        padding: 50px 20px;
+    }
+
+    .feature-cards {
+        gap: 15px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* HOW IT WORKS */
+    .how-it-works {
+        padding: 50px 20px;
+    }
+
+    .steps-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+
+    .step-card {
+        width: 100%;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+        padding: 50px 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 26px;
+    }
+
+    /* SCAN PAGE */
+    .scan-content {
+        padding: 30px 20px;
+    }
+
+    .scan-content h1 {
+        font-size: 30px;
+    }
+
+    .scan-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scan-btn, .cancel-btn {
+        width: 100%;
+    }
+
+    /* RESULTS PAGE */
+    .results-section {
+        padding: 40px 15px;
+    }
+
+    .results-section h1 {
+        font-size: 30px;
+    }
+
+    .detection-stats {
+        gap: 20px;
+    }
+
+    .stat span {
+        font-size: 36px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scan-btn, .download-btn {
+        width: 100%;
+    }
+
+    /* ABOUT PAGE */
+    .about-section {
+        padding: 40px 15px;
+    }
+
+    .about-hero h1 {
+        font-size: 30px;
+    }
+
+    .tech-grid {
+        gap: 10px;
+    }
+
+    .tech-item {
+        padding: 10px 15px;
+    }
+
+    /* FOOTER */
+    .footer {
+        font-size: 12px;
+        padding: 20px;
+    }
+}
