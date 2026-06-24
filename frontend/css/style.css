@@ -64,7 +64,7 @@ body {
     padding: 50px 20px;
     
     /* 1. Dark overlay blend + Your Image */
-    background: linear-gradient(rgba(10, 10, 10, 0.80), rgba(10, 10, 10, 0.80)), url('/background.png');
+    background: linear-gradient(rgba(10, 10, 10, 0.80), rgba(10, 10, 10, 0.80)), url('../assets/background.png');
     
     /* 2. Makes sure the image scales perfectly and stays centered */
     background-size: cover;
