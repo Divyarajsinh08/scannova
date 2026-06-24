@@ -1,0 +1,400 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111111;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #00ff88;
+}
+
+.nav-logo i {
+    font-size: 28px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00ff88;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    
+    /* 1. Dark overlay blend + Your Image */
+    background: linear-gradient(rgba(10, 10, 10, 0.80), rgba(10, 10, 10, 0.80)), url('/background.png');
+    
+    /* 2. Makes sure the image scales perfectly and stays centered */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: #00ff88;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #aaaaaa;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* ===== BADGE ===== */
+.badge {
+    display: inline-block;
+    background-color: #0d1f17;
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* ===== CTA BUTTON ===== */
+.cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    color: #000000;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-top: 30px;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+/* ===== STATS ===== */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    padding: 50px;
+    background-color: #111;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #00ff88;
+}
+
+.stat-item p {
+    color: #aaaaaa;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ===== UPLOAD BOX ===== */
+.upload-box {
+    border: 2px dashed #00ff88;
+    border-radius: 20px;
+    padding: 50px 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #111;
+}
+
+.upload-box:hover {
+    background-color: #0d1f17;
+    transform: scale(1.01);
+}
+
+.upload-icon {
+    font-size: 60px;
+    color: #00ff88;
+    margin-bottom: 15px;
+}
+
+.upload-box h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.upload-box p {
+    color: #aaaaaa;
+    margin-bottom: 15px;
+}
+
+.upload-btn {
+    background-color: #00ff88;
+    color: #000000;
+    padding: 12px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #00cc6a;
+}
+
+.file-info {
+    margin-top: 15px;
+    color: #00ff88 !important;
+    font-size: 14px !important;
+}
+
+/* ===== SCAN BUTTON ===== */
+.scan-btn {
+    background: linear-gradient(135deg, #00cc6a, #00cc6a);
+    color: #000000;
+    border: none;
+    padding: 18px 60px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.scan-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+/* ===== LOADING ===== */
+.loading {
+    margin-top: 30px;
+    color: #00ff88;
+    font-size: 18px;
+}
+
+.loading i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* ===== FEATURES ===== */
+.features {
+    padding: 80px 50px;
+    text-align: center;
+    background-color: #111111;
+}
+
+.features h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+/* ===== SECTION DESC ===== */
+.section-desc {
+    color: #aaaaaa;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* ===== FEATURE CARDS ===== */
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 40px 30px;
+    width: 220px;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    border-color: #00ff88;
+    transform: translateY(-5px);
+}
+
+.card i {
+    font-size: 40px;
+    color: #00ff88;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+/* ===== HOW IT WORKS ===== */
+.how-it-works {
+    padding: 80px 50px;
+    text-align: center;
+    background-color: #0a0a0a;
+}
+
+.how-it-works h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.steps-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.step-card {
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 180px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.step-card:hover {
+    border-color: #00ff88;
+    transform: translateY(-5px);
+}
+
+.step-num {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00ff88;
+    color: #000;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.step-card i {
+    font-size: 35px;
+    color: #00ff88;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.step-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.step-card p {
+    color: #aaaaaa;
+    font-size: 13px;
+}
+
+.step-arrow {
+    color: #00ff88;
+    font-size: 24px;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+    padding: 80px 50px;
+    text-align: center;
+    background-color: #0d1f17;
+    border-top: 1px solid #00ff8833;
+    border-bottom: 1px solid #00ff8833;
+}
+
+.cta-section h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    color: #aaaaaa;
+    font-size: 16px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #111111;
+    border-top: 1px solid #222;
+    color: #aaaaaa;
+    font-size: 14px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scannova - Scan Results</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/result.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <i class="fas fa-shield-alt"></i>
+            <span>Scannova</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- RESULTS SECTION -->
+    <section class="results-section">
+        <h1>Scan <span class="highlight">Results</span></h1>
+
+        <!-- VERDICT BOX -->
+        <div class="verdict-box" id="verdictBox">
+            <i class="fas fa-spinner fa-spin" id="verdictIcon"></i>
+            <h2 id="verdictText">Analyzing...</h2>
+            <p id="verdictDesc">Please wait while we process your results</p>
+        </div>
+
+        <!-- THREAT SCORE -->
+        <div class="score-box">
+            <h3>Threat Score</h3>
+            <div class="score-circle" id="scoreCircle">
+                <span id="scoreNumber">0</span>
+                <small>/100</small>
+            </div>
+        </div>
+
+        <!-- FILE INFO -->
+        <div class="info-box">
+            <h3><i class="fas fa-file"></i> File Information</h3>
+            <table class="info-table">
+                <tr>
+                    <td>File Name</td>
+                    <td id="infoFileName">-</td>
+                </tr>
+                <tr>
+                    <td>File Size</td>
+                    <td id="infoFileSize">-</td>
+                </tr>
+                <tr>
+                    <td>File Type</td>
+                    <td id="infoFileType">-</td>
+                </tr>
+                <tr>
+                    <td>Scan Date</td>
+                    <td id="infoScanDate">-</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- DETECTION RESULTS -->
+        <div class="info-box">
+            <h3><i class="fas fa-virus"></i> Detection Results</h3>
+            <div class="detection-stats">
+                <div class="stat danger">
+                    <span id="maliciousCount">0</span>
+                    <small>Malicious</small>
+                </div>
+                <div class="stat warning">
+                    <span id="suspiciousCount">0</span>
+                    <small>Suspicious</small>
+                </div>
+                <div class="stat safe">
+                    <span id="cleanCount">0</span>
+                    <small>Clean</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="action-buttons">
+            <button class="scan-btn" onclick="window.location.href='index.html'">
+                <i class="fas fa-redo"></i> Scan Another File
+            </button>
+            <button class="download-btn" onclick="downloadReport()">
+                <i class="fas fa-download"></i> Download Report
+            </button>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>🛡️ Scannova &copy; 2026 | Built by Parmar Divyarajsinh M.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html>

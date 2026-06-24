@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scannova - Scan Your File</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scan.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <i class="fas fa-shield-alt"></i>
+            <span>Scannova</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="scan.html">Scan File</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- CYBER BACKGROUND CANVAS -->
+    <canvas id="cyberCanvas"></canvas>
+
+    <!-- SCAN SECTION -->
+    <section class="scan-section">
+        <div class="scan-content">
+            <h1>Scan Your <span class="highlight">File</span></h1>
+            <p>Upload any file, APK, or document and we'll check it for threats instantly!</p>
+
+            <!-- UPLOAD BOX -->
+            <div class="upload-box" id="uploadBox">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <h3>Drag & Drop your file here</h3>
+                <p>or</p>
+                <label for="fileInput" class="upload-btn">Choose File</label>
+                <input type="file" id="fileInput" hidden>
+                <p class="file-info" id="fileName">No file chosen</p>
+            </div>
+
+            <!-- FILE TYPES -->
+            <div class="file-types">
+                <span><i class="fas fa-file-pdf"></i> PDF</span>
+                <span><i class="fas fa-file-word"></i> DOC</span>
+                <span><i class="fas fa-file-code"></i> APK</span>
+                <span><i class="fas fa-file-archive"></i> ZIP</span>
+                <span><i class="fas fa-file"></i> EXE</span>
+                <span><i class="fas fa-file-image"></i> IMG</span>
+            </div>
+
+            <!-- SCAN BUTTONS -->
+            <div class="scan-buttons">
+                <button class="scan-btn" id="scanBtn" onclick="scanFile()">
+                    <i class="fas fa-search"></i> Scan Now
+                </button>
+                <button class="cancel-btn" id="cancelBtn" onclick="cancelFile()">
+                    <i class="fas fa-times"></i> Remove File
+                </button>
+            </div>
+
+            <!-- LOADING -->
+            <div class="loading" id="loading" style="display:none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Scanning your file... Please wait</p>
+            </div>
+
+            <!-- WARNING -->
+            <p class="warning-text">
+                <i class="fas fa-info-circle"></i>
+                Max file size: 32MB | Your file is sent securely for scanning
+            </p>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>🛡️ Scannova &copy; 2026 | Built by Parmar Divyarajsinh</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cyber-bg.js"></script>
+</body>
+</html>
