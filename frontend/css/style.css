@@ -417,6 +417,13 @@ body {
     .hero h1 {
         font-size: 32px;
     }
+    /* HERO BACKGROUND FIX FOR MOBILE */
+    .hero {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        min-height: 100svh;
+    }
 
     .hero p {
         font-size: 15px;
