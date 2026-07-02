@@ -38,14 +38,17 @@ def scan_file(file_path, file_name, file_size, file_type):
         analysis_id = upload_response.json()['data']['id']
 
         # ===== STEP 2: POLL UNTIL SCAN IS ACTUALLY COMPLETE =====
-        # VirusTotal analysis is async - a fixed sleep isn't reliable because
-        # engines can take anywhere from a few seconds to over a minute.
-        # We poll the analysis endpoint until status == "completed" (or we
-        # give up after max_wait seconds and return what we have).
-        max_wait = 60          # total seconds to wait before giving up
-        poll_interval = 5      # seconds between checks
+        # VirusTotal analysis is async. We poll until status == "completed".
+        # We ALSO require the stats to be non-empty (total > 0), because VT's
+        # own backend can briefly report status "completed" a moment before
+        # the detection stats are fully written/visible (eventual consistency
+        # on their end). Trusting status alone caused intermittent false
+        # "0 malicious" results on files that are definitely malicious.
+        max_wait = 90           # total seconds to wait before giving up
+        poll_interval = 5       # seconds between checks
         elapsed = 0
         data = None
+        stats = {}
 
         while elapsed < max_wait:
             time.sleep(poll_interval)
@@ -69,26 +72,26 @@ def scan_file(file_path, file_name, file_size, file_type):
 
             data = result_response.json()
             status = data['data']['attributes'].get('status')
+            stats = data['data']['attributes'].get('stats', {})
+            stats_total = sum(stats.values()) if stats else 0
 
-            if status == 'completed':
+            if status == 'completed' and stats_total > 0:
                 break
         else:
-            # Loop finished without a `break` -> still not completed
+            # Loop finished without a `break` -> never got a real completed
+            # result with populated stats.
             return {
-                'error': 'Scan is taking longer than expected. Please check back in a minute.',
+                'error': 'Scan is taking longer than expected. Please try scanning again.',
                 'file_name': file_name,
                 'file_size': file_size,
                 'file_type': file_type,
                 'malicious': 0,
                 'suspicious': 0,
                 'clean': 0,
-                'analysis_id': analysis_id,
-                'status': data['data']['attributes'].get('status') if data else 'unknown'
+                'analysis_id': analysis_id
             }
 
         # ===== STEP 3: EXTRACT RESULTS =====
-        stats = data['data']['attributes']['stats']
-
         malicious = stats.get('malicious', 0)
         suspicious = stats.get('suspicious', 0)
         undetected = stats.get('undetected', 0)
