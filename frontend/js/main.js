@@ -74,6 +74,11 @@ async function scanFile() {
         return;
     }
 
+    // Clear any old result first. If this tab gets backgrounded and reloaded
+    // by the browser mid-scan, we don't want an old scan's result to be
+    // mistaken for the new one.
+    localStorage.removeItem('scanResult');
+
     // Show loading
     loading.style.display = 'block';
     scanBtn.disabled = true;
