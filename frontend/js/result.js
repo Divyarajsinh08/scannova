@@ -13,6 +13,34 @@ window.onload = function() {
 // ===== DISPLAY RESULTS =====
 function displayResults(data) {
 
+    // ===== HANDLE BACKEND / VIRUSTOTAL ERRORS FIRST =====
+    // If the backend couldn't get a real result (bad/rate-limited API key,
+    // VT quota exceeded, analysis timed out, etc.) it returns an `error`
+    // field alongside malicious:0/suspicious:0/clean:0. Those zeros are NOT
+    // a real "clean" verdict - they just mean "we don't know". Showing
+    // "SAFE" in that case is misleading, so we short-circuit here instead
+    // of falling through to the normal safe/suspicious/dangerous logic.
+    if (data.error) {
+        const verdictBox = document.getElementById('verdictBox');
+        verdictBox.classList.add('verdict-error');
+        document.getElementById('verdictIcon').className = 'fas fa-exclamation-circle';
+        document.getElementById('verdictText').textContent = '⚠️ SCAN FAILED';
+        document.getElementById('verdictDesc').textContent =
+            data.error + ' — this is NOT a "safe" result, the scan could not be completed.';
+
+        document.getElementById('infoFileName').textContent = data.file_name || '-';
+        document.getElementById('infoFileSize').textContent = data.file_size || '-';
+        document.getElementById('infoFileType').textContent = data.file_type || '-';
+        document.getElementById('infoScanDate').textContent = new Date().toLocaleString();
+
+        document.getElementById('maliciousCount').textContent = '?';
+        document.getElementById('suspiciousCount').textContent = '?';
+        document.getElementById('cleanCount').textContent = '?';
+
+        document.getElementById('scoreNumber').textContent = '?';
+        return; // don't run the safe/suspicious/dangerous scoring below
+    }
+
     // File Information
     document.getElementById('infoFileName').textContent = data.file_name || '-';
     document.getElementById('infoFileSize').textContent = data.file_size || '-';
@@ -74,6 +102,11 @@ function displayResults(data) {
 
 // ===== DOWNLOAD PDF REPORT =====
 function downloadReport() {
+    if (scanResult && scanResult.error) {
+        alert('⚠️ Cannot generate a report: the scan did not complete successfully.\n\n' + scanResult.error);
+        return;
+    }
+
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 

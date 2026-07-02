@@ -24,8 +24,14 @@ def scan_file(file_path, file_name, file_size, file_type):
             )
 
         if upload_response.status_code != 200:
+            if upload_response.status_code == 401:
+                reason = 'Invalid or missing VirusTotal API key.'
+            elif upload_response.status_code == 429:
+                reason = 'VirusTotal rate limit or daily quota exceeded. Try again later.'
+            else:
+                reason = f'VirusTotal upload failed (HTTP {upload_response.status_code}).'
             return {
-                'error': 'Failed to upload file to VirusTotal',
+                'error': reason,
                 'file_name': file_name,
                 'file_size': file_size,
                 'file_type': file_type,
@@ -60,8 +66,12 @@ def scan_file(file_path, file_name, file_size, file_type):
             )
 
             if result_response.status_code != 200:
+                if result_response.status_code == 429:
+                    reason = 'VirusTotal rate limit hit while polling for results. Try again in a minute.'
+                else:
+                    reason = f'Failed to get scan results (HTTP {result_response.status_code}).'
                 return {
-                    'error': 'Failed to get scan results',
+                    'error': reason,
                     'file_name': file_name,
                     'file_size': file_size,
                     'file_type': file_type,

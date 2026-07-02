@@ -64,6 +64,15 @@
     color: #ff4444;
 }
 
+.verdict-error {
+    border-color: #888888 !important;
+    background-color: #1a1a1a !important;
+}
+
+.verdict-error i {
+    color: #cccccc;
+}
+
 /* ===== SCORE BOX ===== */
 .score-box {
     background-color: #111;
